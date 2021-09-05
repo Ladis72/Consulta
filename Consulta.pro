@@ -13,17 +13,20 @@ SOURCES += \
     dbfunc.cpp \
     loggin.cpp \
     main.cpp \
-    consulta.cpp
+    consulta.cpp \
+    pacientes.cpp
 
 HEADERS += \
     conexion.h \
     consulta.h \
     dbfunc.h \
-    loggin.h
+    loggin.h \
+    pacientes.h
 
 FORMS += \
     consulta.ui \
-    loggin.ui
+    loggin.ui \
+    pacientes.ui
 
 TRANSLATIONS += \
     Consulta_es_ES.ts

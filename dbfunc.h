@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QSqlTableModel>
 
 class dbFunc : public QObject
 {
@@ -11,6 +12,7 @@ class dbFunc : public QObject
 public:
     explicit dbFunc(QObject *parent = nullptr);
     bool funcionaDB();
+    QSqlTableModel *pacientesTableModel();
 
 signals:
 

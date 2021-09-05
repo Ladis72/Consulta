@@ -18,3 +18,11 @@ bool dbFunc::funcionaDB()
     return false;
 
 }
+
+QSqlTableModel* dbFunc::pacientesTableModel()
+{
+    QSqlTableModel *pacientesTableModel = new QSqlTableModel(this, QSqlDatabase::database("DB"));
+    pacientesTableModel->setTable("pacientes");
+    pacientesTableModel->select();
+    return pacientesTableModel;
+}
