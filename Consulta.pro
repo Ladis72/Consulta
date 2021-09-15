@@ -1,3 +1,4 @@
+//Ladis
 QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -13,17 +14,23 @@ SOURCES += \
     dbfunc.cpp \
     loggin.cpp \
     main.cpp \
-    consulta.cpp
+    consulta.cpp \
+    nuevopaciente.cpp \
+    pacientes.cpp
 
 HEADERS += \
     conexion.h \
     consulta.h \
     dbfunc.h \
-    loggin.h
+    loggin.h \
+    nuevopaciente.h \
+    pacientes.h
 
 FORMS += \
     consulta.ui \
-    loggin.ui
+    loggin.ui \
+    nuevopaciente.ui \
+    pacientes.ui
 
 TRANSLATIONS += \
     Consulta_es_ES.ts

@@ -1,5 +1,32 @@
 <RCC>
     <qresource prefix="/new/ico">
         <file>iconos/demographic.png</file>
+        <file>iconos/Application.ico</file>
+        <file>iconos/button-cross_basic_red.png</file>
+        <file>iconos/button-rotate-ccw_basic_yellow.png</file>
+        <file>iconos/button-rotate-cw_basic_blue.png</file>
+        <file>iconos/button-synchronize_basic_blue.png</file>
+        <file>iconos/cash_register.png</file>
+        <file>iconos/checkbox_checked.png</file>
+        <file>iconos/close.png</file>
+        <file>iconos/DefineControls.ico</file>
+        <file>iconos/DefineControls.png</file>
+        <file>iconos/edit.png</file>
+        <file>iconos/email_open.png</file>
+        <file>iconos/emblem-people.png</file>
+        <file>iconos/facebook.png</file>
+        <file>iconos/file_add.png</file>
+        <file>iconos/folder-important.png</file>
+        <file>iconos/gnome-searchtool.png</file>
+        <file>iconos/kwalletmanager.png</file>
+        <file>iconos/medidas.ico</file>
+        <file>iconos/parametros.ico</file>
+        <file>iconos/PatientData.ico</file>
+        <file>iconos/PatientFile.png</file>
+        <file>iconos/pdf.png</file>
+        <file>iconos/preview.png</file>
+        <file>iconos/Printer_Picture.png</file>
+        <file>iconos/Stethoscope_Black.png</file>
+        <file>iconos/ViewResults.ico</file>
     </qresource>
 </RCC>

@@ -3,7 +3,10 @@
 
 #include <QObject>
 #include <QSqlQuery>
+#include <QSqlError>
 #include <QSqlQueryModel>
+#include <QSqlTableModel>
+#include <QSqlRecord>
 
 class dbFunc : public QObject
 {
@@ -11,6 +14,10 @@ class dbFunc : public QObject
 public:
     explicit dbFunc(QObject *parent = nullptr);
     bool funcionaDB();
+    QSqlTableModel *pacientesTableModel();
+    bool grabarPaciente(QStringList datosPaciente);
+    QStringList datosPaciente(int idPaciente);
+    bool modificarPaciente(int idPaciente, QStringList datosPaciente);
 
 signals:
 
