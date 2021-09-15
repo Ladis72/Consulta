@@ -22,6 +22,8 @@ private slots:
     void on_pushButton_clicked();
 
 private:
+    bool rellenarDatosPaciente(int idPaciente);
+
     Ui::Consulta *ui;
     Conexion *conexion;
     dbFunc funcion;
