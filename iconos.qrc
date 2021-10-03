@@ -1,6 +1,5 @@
 <RCC>
-    <qresource prefix="/new/ico">
-        <file>iconos/demographic.png</file>
+    <qresource prefix="/">
         <file>iconos/Application.ico</file>
         <file>iconos/button-cross_basic_red.png</file>
         <file>iconos/button-rotate-ccw_basic_yellow.png</file>
@@ -11,6 +10,7 @@
         <file>iconos/close.png</file>
         <file>iconos/DefineControls.ico</file>
         <file>iconos/DefineControls.png</file>
+        <file>iconos/demographic.png</file>
         <file>iconos/edit.png</file>
         <file>iconos/email_open.png</file>
         <file>iconos/emblem-people.png</file>
@@ -24,8 +24,10 @@
         <file>iconos/PatientData.ico</file>
         <file>iconos/PatientFile.png</file>
         <file>iconos/pdf.png</file>
+        <file>iconos/presion-arterial.png</file>
         <file>iconos/preview.png</file>
         <file>iconos/Printer_Picture.png</file>
+        <file>iconos/Snowe2.1 Icon 13.ico</file>
         <file>iconos/Stethoscope_Black.png</file>
         <file>iconos/ViewResults.ico</file>
     </qresource>

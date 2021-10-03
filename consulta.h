@@ -4,7 +4,10 @@
 #include "dbfunc.h"
 #include "conexion.h"
 #include "pacientes.h"
+#include "configuracion.h"
 #include <QMainWindow>
+#include <QFileSystemModel>
+#include <QListWidgetItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Consulta; }
@@ -19,15 +22,32 @@ public:
     ~Consulta();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_pbPacientes_clicked();
+
+    void on_pbConfiguracion_clicked();
+
+    void on_lvIris_itemDoubleClicked(QListWidgetItem *item);
 
 private:
-    bool rellenarDatosPaciente(int idPaciente);
+    void rellenarDatosPaciente(int idPaciente);
+    void cargarConfiguracion();
+    void llenarIris();
+    void llenarAnalisis();
+    void llenarInforme();
 
     Ui::Consulta *ui;
     Conexion *conexion;
     dbFunc funcion;
     Pacientes *pacienteDlg;
+    Configuracion *confDlg;
     int pacienteId;
+    QString paciente;
+    QString directorioTrabajo;
+    QString appPdf;
+    QString appUrl;
+    QString appImagen;
+    QString appVideo;
+    QStringList configuracion;
+    QFileSystemModel *dirIris;
 };
 #endif // CONSULTA_H

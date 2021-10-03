@@ -18,6 +18,10 @@ public:
     bool grabarPaciente(QStringList datosPaciente);
     QStringList datosPaciente(int idPaciente);
     bool modificarPaciente(int idPaciente, QStringList datosPaciente);
+    QString getDirectorioTrabajo();
+    bool setDirectorioTrabajo(QString directorio);
+    QStringList getConfiguracion();
+    bool setConfiguracion(QStringList configuracion);
 
 signals:
 

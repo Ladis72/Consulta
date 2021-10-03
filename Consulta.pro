@@ -11,6 +11,7 @@ CONFIG += c++11
 
 SOURCES += \
     conexion.cpp \
+    configuracion.cpp \
     dbfunc.cpp \
     loggin.cpp \
     main.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 
 HEADERS += \
     conexion.h \
+    configuracion.h \
     consulta.h \
     dbfunc.h \
     loggin.h \
@@ -27,6 +29,7 @@ HEADERS += \
     pacientes.h
 
 FORMS += \
+    configuracion.ui \
     consulta.ui \
     loggin.ui \
     nuevopaciente.ui \

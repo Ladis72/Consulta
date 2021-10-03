@@ -15,7 +15,24 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0" colspan="3">
+    <item row="0" column="3">
+     <widget class="QPushButton" name="pbSalir">
+      <property name="text">
+       <string>Salir</string>
+      </property>
+      <property name="icon">
+       <iconset resource="iconos.qrc">
+        <normaloff>:/iconos/close.png</normaloff>:/iconos/close.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="4">
      <widget class="QTabWidget" name="tabWidget">
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
@@ -41,13 +58,117 @@
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
-      <widget class="QWidget" name="tabDatosBasicos" native="true">
+      <widget class="QWidget" name="tabDatosBasicos">
        <property name="accessibleName">
         <string/>
        </property>
        <attribute name="title">
         <string>Datos básicos</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_13">
+        <item row="1" column="4" rowspan="2">
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>Medicación</string>
+          </property>
+          <property name="flat">
+           <bool>false</bool>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="3" column="3">
+            <widget class="QPushButton" name="pbModificarMedicacion">
+             <property name="text">
+              <string>Modificar</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="3">
+            <widget class="QLineEdit" name="lePosologia"/>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="leDosis"/>
+           </item>
+           <item row="0" column="2" colspan="2">
+            <widget class="QListView" name="lvMedicamentos"/>
+           </item>
+           <item row="2" column="2" colspan="2">
+            <widget class="QTextEdit" name="teNotasmedicamento"/>
+           </item>
+           <item row="3" column="2">
+            <widget class="QPushButton" name="pbAnadirMedicacion">
+             <property name="text">
+              <string>Añadir</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="3" colspan="2">
+         <layout class="QGridLayout" name="gridLayout_8"/>
+        </item>
+        <item row="1" column="2">
+         <widget class="QGroupBox" name="groupBox_8">
+          <property name="title">
+           <string>Informes</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_11">
+           <item row="0" column="0">
+            <widget class="QListView" name="lvInformes"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="3" column="0" colspan="5">
+         <widget class="QTableView" name="tableView"/>
+        </item>
+        <item row="1" column="1">
+         <widget class="QGroupBox" name="groupBox_6">
+          <property name="title">
+           <string>Iris</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_9">
+           <item row="0" column="1">
+            <widget class="QListWidget" name="lvIris">
+             <property name="viewMode">
+              <enum>QListView::ListMode</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QGroupBox" name="groupBox_7">
+          <property name="title">
+           <string>Análisis</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_10">
+           <item row="0" column="0">
+            <widget class="QListView" name="lvAnalisis"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QGroupBox" name="groupBox_9">
+          <property name="title">
+           <string>Otros</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_12">
+           <item row="0" column="0">
+            <widget class="QListView" name="lvOtros"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="0" rowspan="2">
+         <widget class="QTextEdit" name="teNotaPaciente"/>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tabTratamientos">
        <attribute name="title">
@@ -56,89 +177,10 @@
       </widget>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="text">
-       <string>Imprimir</string>
-      </property>
-      <property name="icon">
-       <iconset resource="iconos.qrc">
-        <normaloff>:/new/ico/iconos/Printer_Picture.png</normaloff>:/new/ico/iconos/Printer_Picture.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>40</width>
-        <height>40</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>Pacientes</string>
-      </property>
-      <property name="icon">
-       <iconset resource="iconos.qrc">
-        <normaloff>:/new/ico/iconos/demographic.png</normaloff>:/new/ico/iconos/demographic.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>40</width>
-        <height>40</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="text">
-       <string>Salir</string>
-      </property>
-      <property name="icon">
-       <iconset resource="iconos.qrc">
-        <normaloff>:/new/ico/iconos/close.png</normaloff>:/new/ico/iconos/close.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>40</width>
-        <height>40</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
+    <item row="1" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QLabel" name="lNombre">
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lApellido1">
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lApellido2">
         <property name="font">
          <font>
           <pointsize>14</pointsize>
@@ -167,6 +209,101 @@
       </item>
      </layout>
     </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="pbImprimir">
+      <property name="text">
+       <string>Imprimir</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>:/new/ico/iconos/Printer_Picture.png</normaloff>:/new/ico/iconos/Printer_Picture.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="pbPacientes">
+      <property name="text">
+       <string>Pacientes</string>
+      </property>
+      <property name="icon">
+       <iconset resource="iconos.qrc">
+        <normaloff>:/iconos/demographic.png</normaloff>:/iconos/demographic.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="pbConfiguracion">
+      <property name="text">
+       <string>Configuracion</string>
+      </property>
+      <property name="icon">
+       <iconset resource="iconos.qrc">
+        <normaloff>:/iconos/Snowe2.1 Icon 13.ico</normaloff>:/iconos/Snowe2.1 Icon 13.ico</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="pbMedidaCorporal">
+      <property name="text">
+       <string>Tomar datos antropométricos</string>
+      </property>
+      <property name="icon">
+       <iconset resource="iconos.qrc">
+        <normaloff>:/iconos/medidas.ico</normaloff>:/iconos/medidas.ico</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>25</width>
+        <height>25</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="pbTomarDatos">
+      <property name="text">
+       <string>Tomar datos básicos</string>
+      </property>
+      <property name="icon">
+       <iconset resource="iconos.qrc">
+        <normaloff>:/iconos/presion-arterial.png</normaloff>:/iconos/presion-arterial.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>25</width>
+        <height>25</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+      <property name="openExternalLinks">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -186,7 +323,7 @@
  </resources>
  <connections>
   <connection>
-   <sender>pushButton_3</sender>
+   <sender>pbSalir</sender>
    <signal>clicked()</signal>
    <receiver>Consulta</receiver>
    <slot>close()</slot>

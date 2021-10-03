@@ -78,3 +78,55 @@ bool dbFunc::modificarPaciente(int idPaciente , QStringList datosPaciente)
         return false;
     }
 }
+
+bool dbFunc::setDirectorioTrabajo(QString directorio)
+{
+    QSqlQuery consulta(QSqlDatabase::database("DB"));
+    consulta.exec("UPDATE `consulta`.`configuracion` SET `directorio`="+directorio+" WHERE  `id`=0");
+    if (!consulta.isValid()) {
+        qDebug() << consulta.lastQuery();
+        qDebug() << consulta.lastError();
+        return false;
+    }
+    return true;
+}
+
+QStringList dbFunc::getConfiguracion()
+{
+    QSqlQuery consulta(QSqlDatabase::database("DB"));
+    consulta.exec("SELECT * FROM configuracion");
+    consulta.first();
+    QStringList configuracion;
+    configuracion.clear();
+    QSqlRecord record = consulta.record();
+    for (int i = 0;i < record.count() ;i++ ) {
+        configuracion.append(record.value(i).toString());
+    }
+    return configuracion;
+}
+
+bool dbFunc::setConfiguracion(QStringList configuracion)
+{
+    QSqlQuery consulta(QSqlDatabase::database("DB"));
+    consulta.prepare("UPDATE configuracion SET directorio = ? , pdf = ? , web = ? , imagen = ? , video = ? WHERE id = 0");
+    for (int i = 0;i < configuracion.length()-1 ;i++ ) {
+        consulta.bindValue(i,configuracion.at(i+1));
+        }
+    if (consulta.exec()) {
+        return true;
+    } else {
+        qDebug() << consulta.lastQuery();
+
+        qDebug() << consulta.lastError().text();
+        return false;
+    }
+}
+
+QString dbFunc::getDirectorioTrabajo()
+{
+    QSqlQuery consulta(QSqlDatabase::database("DB"));
+    consulta.exec("select directorio from configuracion");
+    consulta.first();
+    QString directorio = consulta.value(0).toString();
+    return directorio;
+}

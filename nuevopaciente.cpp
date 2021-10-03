@@ -1,12 +1,14 @@
 #include "nuevopaciente.h"
 #include "ui_nuevopaciente.h"
 #include <QDebug>
+#include <QFileSystemModel>
 
 NuevoPaciente::NuevoPaciente(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NuevoPaciente)
 {
     ui->setupUi(this);
+    idPaciente=0;
 }
 
 NuevoPaciente::NuevoPaciente(int idP, QWidget *parent) :
@@ -29,6 +31,14 @@ void NuevoPaciente::on_pbAceptar_clicked()
     if (idPaciente == 0){
     if(funcion->grabarPaciente(datosPaciente) == true){
         qDebug() << "Paciente grabado";
+        QFileSystemModel *modeloDirectorio = new QFileSystemModel;
+        QString directorio = (datosPaciente.at(0)+" "+datosPaciente.at(1)+" "+datosPaciente.at(2)).simplified();
+        qDebug() << directorio;
+        modeloDirectorio->mkdir(modeloDirectorio->setRootPath(funcion->getDirectorioTrabajo()),directorio);
+        modeloDirectorio->mkdir(modeloDirectorio->setRootPath(funcion->getDirectorioTrabajo()+"/"+directorio),"Iris");
+        modeloDirectorio->mkdir(modeloDirectorio->setRootPath(funcion->getDirectorioTrabajo()+"/"+directorio),"Analisis");
+        modeloDirectorio->mkdir(modeloDirectorio->setRootPath(funcion->getDirectorioTrabajo()+"/"+directorio),"Informes");
+
     }else {
         qDebug() << "Error al grabar";
         }
