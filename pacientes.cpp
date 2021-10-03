@@ -29,6 +29,8 @@ void Pacientes::on_nuevoBtn_clicked()
 {
     dialogNuevoPaciente = new NuevoPaciente();
     dialogNuevoPaciente->exec();
+    modeloPacientes = funcion.pacientesTableModel();
+    ui->tableView->setModel(modeloPacientes);
 
 
 }
@@ -55,6 +57,9 @@ void Pacientes::on_pushButton_clicked()
     qDebug() << funcion.datosPaciente(pacienteId);
     dialogNuevoPaciente = new NuevoPaciente(pacienteId);
     dialogNuevoPaciente->exec();
+    modeloPacientes = funcion.pacientesTableModel();
+    ui->tableView->setModel(modeloPacientes);
+
 
 }
 
