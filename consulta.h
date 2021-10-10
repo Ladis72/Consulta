@@ -28,6 +28,14 @@ private slots:
 
     void on_lvIris_itemDoubleClicked(QListWidgetItem *item);
 
+    void on_lvAnalisis_doubleClicked(const QModelIndex &index);
+
+    void on_lvAnalisis_itemDoubleClicked(QListWidgetItem *item);
+
+    void on_lvInformes_itemDoubleClicked(QListWidgetItem *item);
+
+    void on_lvOtros_itemDoubleClicked(QListWidgetItem *item);
+
 private:
     void rellenarDatosPaciente(int idPaciente);
     void cargarConfiguracion();

@@ -71,16 +71,23 @@ void Consulta::llenarIris()
 
 void Consulta::llenarAnalisis()
 {
-    QFileSystemModel *dirAnalisis = new QFileSystemModel;
-    ui->lvAnalisis->setModel(dirAnalisis);
-    ui->lvAnalisis->setRootIndex(dirAnalisis->setRootPath(directorioTrabajo+"/"+paciente+"/Analisis"));
+    ui->lvAnalisis->clear();
+    QDir directorioAnalisis;
+    directorioAnalisis.setCurrent(directorioTrabajo+"/"+paciente+"/Analisis");
+    for(const QFileInfo finfo : directorioAnalisis.entryList(QDir::Files)){
+        ui->lvAnalisis->addItem(finfo.fileName());
+    }
+
 }
 
 void Consulta::llenarInforme()
 {
-    QFileSystemModel *dirInformes = new QFileSystemModel;
-    ui->lvInformes->setModel(dirInformes);
-    ui->lvInformes->setRootIndex(dirInformes->setRootPath(directorioTrabajo+"/"+paciente+"/Informes"));
+    ui->lvInformes->clear();
+    QDir directorioInforme;
+    directorioInforme.setCurrent(directorioTrabajo+"/"+paciente+"/Informes");
+    for(const QFileInfo finfo : directorioInforme.entryList(QDir::Files)){
+    ui->lvInformes->addItem(finfo.fileName());
+    }
 }
 
 
@@ -117,5 +124,44 @@ void Consulta::on_lvIris_itemDoubleClicked(QListWidgetItem *item)
         QProcess *proc = new QProcess(this);
         proc->start(programa,arg);
     }
+}
+
+
+void Consulta::on_lvAnalisis_itemDoubleClicked(QListWidgetItem *item)
+{
+    QString analisis = directorioTrabajo+"/"+paciente+"/"+"Analisis/"+item->text();
+    QFileInfo info(analisis);
+    if (info.completeSuffix() == "jpg" or info.completeSuffix() == "png") {
+        QString programa = appImagen;
+        QStringList arg;
+        arg << analisis.toLocal8Bit().constData();
+        QProcess *proc = new QProcess(this);
+        proc->start(programa,arg);
+    }
+    if (info.completeSuffix() == "pdf") {
+        QString programa = appPdf;
+        QStringList arg;
+        arg << analisis.toLocal8Bit().constData();
+        QProcess *proc = new QProcess(this);
+        proc->start(programa,arg);
+    }
+}
+
+
+void Consulta::on_lvInformes_itemDoubleClicked(QListWidgetItem *item)
+{
+    QString informe = directorioTrabajo+"/"+paciente+"/"+"/Informes/"+item->text();
+    QString programa = appPdf;
+    QStringList arg;
+    arg << informe.toLocal8Bit().constData();
+    QProcess *proc = new QProcess(this);
+    proc->start(programa,arg);
+
+}
+
+
+void Consulta::on_lvOtros_itemDoubleClicked(QListWidgetItem *item)
+{
+
 }
 
