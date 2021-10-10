@@ -108,7 +108,7 @@ QStringList dbFunc::getConfiguracion()
 bool dbFunc::setConfiguracion(QStringList configuracion)
 {
     QSqlQuery consulta(QSqlDatabase::database("DB"));
-    consulta.prepare("UPDATE configuracion SET directorio = ? , pdf = ? , web = ? , imagen = ? , video = ? WHERE id = 0");
+    consulta.prepare("UPDATE configuracion SET directorio = ? , pdf = ? , web = ? , imagen = ? , video = ? , texto = ? WHERE id = 0");
     for (int i = 0;i < configuracion.length()-1 ;i++ ) {
         consulta.bindValue(i,configuracion.at(i+1));
         }
@@ -120,6 +120,15 @@ bool dbFunc::setConfiguracion(QStringList configuracion)
         qDebug() << consulta.lastError().text();
         return false;
     }
+}
+
+bool dbFunc::guardarDatosPaciente(int idPaciente, QString datos)
+{
+    QSqlQuery consulta(QSqlDatabase::database("DB"));
+    consulta.prepare("UPDATE pacientes SET notas = ? WHERE idPaciente = ?");
+    consulta.bindValue(0,datos);
+    consulta.bindValue(1,idPaciente);
+    return consulta.exec() ? true : false;
 }
 
 QString dbFunc::getDirectorioTrabajo()

@@ -26,6 +26,7 @@ void Configuracion::leerConfiguracion()
     configuracion.replace(3, ui->leUrl->text());
     configuracion.replace(4, ui->leImagen->text());
     configuracion.replace(5, ui->leVideo->text());
+    configuracion.replace(6, ui->leTexto->text());
 }
 
 
@@ -43,6 +44,7 @@ void Configuracion::rellenarCampos()
     ui->leUrl->setText(configuracion.at(3));
     ui->leImagen->setText(configuracion.at(4));
     ui->leVideo->setText(configuracion.at(5));
+    ui->leTexto->setText(configuracion.at(6));
 }
 
 
@@ -111,5 +113,16 @@ void Configuracion::on_leVideo_editingFinished()
 {
     leerConfiguracion();
 
+}
+
+
+void Configuracion::on_pushButton_clicked()
+{
+}
+
+
+void Configuracion::on_leTexto_editingFinished()
+{
+    leerConfiguracion();
 }
 

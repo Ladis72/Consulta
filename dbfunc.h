@@ -22,6 +22,7 @@ public:
     bool setDirectorioTrabajo(QString directorio);
     QStringList getConfiguracion();
     bool setConfiguracion(QStringList configuracion);
+    bool guardarDatosPaciente(int idPaciente, QString datos);
 
 signals:
 
