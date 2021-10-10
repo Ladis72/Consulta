@@ -49,7 +49,7 @@ void Consulta::rellenarDatosPaciente(int idPaciente)
     QFile foto(directorioTrabajo+"/"+paciente+"/Foto.png");
     if (foto.exists()) {
         QPixmap pixmap(foto.fileName());
-        ui->label->setPixmap(pixmap.scaled(200,200,Qt::KeepAspectRatio));
+        ui->label->setPixmap(pixmap.scaled(200,200,Qt::KeepAspectRatio ));
     }
     llenarIris();
     llenarAnalisis();
@@ -73,11 +73,9 @@ void Consulta::cargarConfiguracion()
 void Consulta::llenarIris()
 {
     ui->lvIris->clear();
-    QDir directorioIris;
-    directorioIris.setCurrent(directorioTrabajo+"/"+paciente+"/Iris");
-      for(const QFileInfo finfo : directorioIris.entryList(QDir::Files)){
-          ui->lvIris->addItem(finfo.fileName());
-      }
+    QDir directorioIris(directorioTrabajo+"/"+paciente+"/Iris");
+    QStringList elementos = directorioIris.entryList(QStringList() << "*.*" , QDir::Files);
+    ui->lvIris->addItems(elementos);
       ui->lvIris->sortItems(Qt::DescendingOrder);
 }
 
@@ -85,34 +83,27 @@ void Consulta::llenarAnalisis()
 {
     ui->lvAnalisis->clear();
     QDir directorioAnalisis;
-    directorioAnalisis.setCurrent(directorioTrabajo+"/"+paciente+"/Analisis");
-    for(const QFileInfo finfo : directorioAnalisis.entryList(QDir::Files)){
-        ui->lvAnalisis->addItem(finfo.fileName());
-    }
-    ui->lvAnalisis->sortItems(Qt::DescendingOrder);
+    QStringList elementos = directorioAnalisis.entryList(QStringList() << "*.*" , QDir::Files);
+    ui->lvIris->addItems(elementos);
+      ui->lvIris->sortItems(Qt::DescendingOrder);
 }
 
 void Consulta::llenarInforme()
 {
     ui->lvInformes->clear();
     QDir directorioInforme;
-    directorioInforme.setCurrent(directorioTrabajo+"/"+paciente+"/Informes");
-    for(const QFileInfo finfo : directorioInforme.entryList(QDir::Files)){
-    ui->lvInformes->addItem(finfo.fileName());
-    }
-    ui->lvInformes->sortItems(Qt::DescendingOrder);
+    QStringList elementos = directorioInforme.entryList(QStringList() << "*.*" , QDir::Files);
+    ui->lvIris->addItems(elementos);
+      ui->lvIris->sortItems(Qt::DescendingOrder);
 }
 
 void Consulta::llenarOtros()
 {
     ui->lvOtros->clear();
     QDir directorioOtros;
-    directorioOtros.setCurrent(directorioTrabajo+"/"+paciente);
-    qDebug() << directorioOtros;
-    for(const QFileInfo finfo : directorioOtros.entryInfoList(QDir::Files)){
-        ui->lvOtros->addItem(finfo.fileName());
-    }
-    ui->lvOtros->sortItems(Qt::DescendingOrder);
+    QStringList elementos = directorioOtros.entryList(QStringList() << "*.*" , QDir::Files);
+    ui->lvIris->addItems(elementos);
+      ui->lvIris->sortItems(Qt::DescendingOrder);
 }
 
 
