@@ -50,6 +50,7 @@ void NuevoPaciente::on_pbAceptar_clicked()
             qDebug() << "Error al modificar";
             }
         return;
+        this->deleteLater();
 }
 
 }

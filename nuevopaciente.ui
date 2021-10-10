@@ -16,33 +16,23 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="8" column="7">
-      <widget class="QLabel" name="label_11">
-       <property name="text">
-        <string>RH</string>
-       </property>
-       <property name="buddy">
-        <cstring>cbRH</cstring>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="1" colspan="2">
       <widget class="QLineEdit" name="leApellido1"/>
      </item>
-     <item row="1" column="3" colspan="3">
-      <widget class="QLineEdit" name="leApellido2"/>
+     <item row="9" column="5">
+      <widget class="QSpinBox" name="sbHijos"/>
      </item>
-     <item row="0" column="6">
-      <widget class="QLabel" name="label_4">
+     <item row="7" column="6">
+      <widget class="QLabel" name="label_10">
        <property name="text">
-        <string>DNI</string>
+        <string>Grupo sangíneo</string>
        </property>
        <property name="buddy">
-        <cstring>leDNI</cstring>
+        <cstring>cbGrupoSanguineo</cstring>
        </property>
       </widget>
      </item>
-     <item row="4" column="5">
+     <item row="3" column="5">
       <widget class="QLabel" name="label_14">
        <property name="text">
         <string>Telefono</string>
@@ -52,72 +42,10 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="5">
-      <widget class="QLineEdit" name="leTlfn"/>
+     <item row="1" column="0">
+      <widget class="QLineEdit" name="leNombre"/>
      </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Nombre</string>
-       </property>
-       <property name="buddy">
-        <cstring>leNombre</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="1">
-      <widget class="QDateEdit" name="deNacimiento">
-       <property name="displayFormat">
-        <string>dd/MM/yyyy</string>
-       </property>
-       <property name="calendarPopup">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="2">
-      <widget class="QLineEdit" name="leProvincia"/>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Primer apellido</string>
-       </property>
-       <property name="buddy">
-        <cstring>leApellido1</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="7">
-      <widget class="QComboBox" name="cbRH">
-       <item>
-        <property name="text">
-         <string>NS</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>+</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>-</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="0" column="3">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Segundo apellido</string>
-       </property>
-       <property name="buddy">
-        <cstring>leApellido2</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="6">
+     <item row="3" column="6">
       <widget class="QLabel" name="label_15">
        <property name="text">
         <string>E-mail</string>
@@ -127,20 +55,20 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="2">
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+     <item row="7" column="1">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Fecha de nacimiento</string>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
+       <property name="buddy">
+        <cstring>deNacimiento</cstring>
        </property>
-      </spacer>
+      </widget>
      </item>
-     <item row="10" column="6">
+     <item row="1" column="6">
+      <widget class="QLineEdit" name="leDNI"/>
+     </item>
+     <item row="9" column="6">
       <widget class="QComboBox" name="cbGrupoSanguineo">
        <item>
         <property name="text">
@@ -169,27 +97,100 @@
        </item>
       </widget>
      </item>
-     <item row="8" column="1">
-      <widget class="QLabel" name="label_5">
+     <item row="5" column="3">
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="7" column="2">
+      <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>Fecha de nacimiento</string>
+        <string>Sexo</string>
        </property>
        <property name="buddy">
-        <cstring>deNacimiento</cstring>
+        <cstring>cbSexo</cstring>
        </property>
       </widget>
      </item>
-     <item row="4" column="2">
-      <widget class="QLabel" name="label_13">
+     <item row="7" column="7">
+      <widget class="QLabel" name="label_11">
        <property name="text">
-        <string>Provinvia</string>
+        <string>RH</string>
        </property>
        <property name="buddy">
-        <cstring>leProvincia</cstring>
+        <cstring>cbRH</cstring>
        </property>
       </widget>
      </item>
-     <item row="10" column="3">
+     <item row="7" column="3">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>E. civil</string>
+       </property>
+       <property name="buddy">
+        <cstring>cbECivil</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Segundo apellido</string>
+       </property>
+       <property name="buddy">
+        <cstring>leApellido2</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="5">
+      <widget class="QLineEdit" name="leTlfn"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Primer apellido</string>
+       </property>
+       <property name="buddy">
+        <cstring>leApellido1</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Nombre</string>
+       </property>
+       <property name="buddy">
+        <cstring>leNombre</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="2">
+      <widget class="QComboBox" name="cbSexo">
+       <item>
+        <property name="text">
+         <string>Masculino</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Femenino</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="1" column="3" colspan="3">
+      <widget class="QLineEdit" name="leApellido2"/>
+     </item>
+     <item row="9" column="3">
       <widget class="QComboBox" name="cbECivil">
        <item>
         <property name="text">
@@ -223,113 +224,30 @@
        </item>
       </widget>
      </item>
-     <item row="8" column="0">
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Profesión</string>
-       </property>
-       <property name="buddy">
-        <cstring>leProfesion</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="2">
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string>Sexo</string>
-       </property>
-       <property name="buddy">
-        <cstring>cbSexo</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0" colspan="2">
-      <widget class="QLineEdit" name="leLocalidad"/>
-     </item>
-     <item row="8" column="6">
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>Grupo sangíneo</string>
-       </property>
-       <property name="buddy">
-        <cstring>cbGrupoSanguineo</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="3">
-      <widget class="QLabel" name="label_16">
-       <property name="text">
-        <string>C.P.</string>
-       </property>
-       <property name="buddy">
-        <cstring>leCP</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="6">
-      <widget class="QLineEdit" name="leMail"/>
-     </item>
-     <item row="10" column="2">
-      <widget class="QComboBox" name="cbSexo">
-       <item>
-        <property name="text">
-         <string>Masculino</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Femenino</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="10" column="0">
+     <item row="9" column="0">
       <widget class="QLineEdit" name="leProfesion"/>
      </item>
-     <item row="8" column="3">
-      <widget class="QLabel" name="label_8">
-       <property name="text">
-        <string>E. civil</string>
-       </property>
-       <property name="buddy">
-        <cstring>cbECivil</cstring>
-       </property>
+     <item row="9" column="7">
+      <widget class="QComboBox" name="cbRH">
+       <item>
+        <property name="text">
+         <string>NS</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>-</string>
+        </property>
+       </item>
       </widget>
      </item>
-     <item row="5" column="3">
-      <widget class="QLineEdit" name="leCP"/>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLineEdit" name="leNombre"/>
-     </item>
-     <item row="1" column="6">
-      <widget class="QLineEdit" name="leDNI"/>
-     </item>
-     <item row="10" column="5">
-      <widget class="QSpinBox" name="sbHijos"/>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_12">
-       <property name="text">
-        <string>Localidad</string>
-       </property>
-       <property name="buddy">
-        <cstring>leLocalidad</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="5">
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>Hijos</string>
-       </property>
-       <property name="buddy">
-        <cstring>sbHijos</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="3">
-      <spacer name="horizontalSpacer_3">
+     <item row="2" column="2">
+      <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -340,6 +258,88 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item row="3" column="3">
+      <widget class="QLabel" name="label_16">
+       <property name="text">
+        <string>C.P.</string>
+       </property>
+       <property name="buddy">
+        <cstring>leCP</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="QLineEdit" name="leCP"/>
+     </item>
+     <item row="9" column="1">
+      <widget class="QDateEdit" name="deNacimiento">
+       <property name="displayFormat">
+        <string>dd/MM/yyyy</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>Provinvia</string>
+       </property>
+       <property name="buddy">
+        <cstring>leProvincia</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0" colspan="2">
+      <widget class="QLineEdit" name="leLocalidad"/>
+     </item>
+     <item row="7" column="5">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Hijos</string>
+       </property>
+       <property name="buddy">
+        <cstring>sbHijos</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="QLineEdit" name="leProvincia"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Profesión</string>
+       </property>
+       <property name="buddy">
+        <cstring>leProfesion</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Localidad</string>
+       </property>
+       <property name="buddy">
+        <cstring>leLocalidad</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="6">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>DNI</string>
+       </property>
+       <property name="buddy">
+        <cstring>leDNI</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="6">
+      <widget class="QLineEdit" name="leMail"/>
      </item>
     </layout>
    </item>
@@ -359,7 +359,7 @@
       <string>Cancelar</string>
      </property>
      <property name="icon">
-      <iconset resource="iconos.qrc">
+      <iconset>
        <normaloff>:/new/ico/iconos/close.png</normaloff>:/new/ico/iconos/close.png</iconset>
      </property>
      <property name="autoDefault">
@@ -389,7 +389,7 @@
       <string>Aceptar</string>
      </property>
      <property name="icon">
-      <iconset resource="iconos.qrc">
+      <iconset>
        <normaloff>:/new/ico/iconos/checkbox_checked.png</normaloff>:/new/ico/iconos/checkbox_checked.png</iconset>
      </property>
      <property name="autoDefault">
@@ -420,9 +420,7 @@
   <tabstop>pbAceptar</tabstop>
   <tabstop>pbCancelar</tabstop>
  </tabstops>
- <resources>
-  <include location="iconos.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>pbCancelar</sender>

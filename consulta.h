@@ -28,13 +28,15 @@ private slots:
 
     void on_lvIris_itemDoubleClicked(QListWidgetItem *item);
 
-    void on_lvAnalisis_doubleClicked(const QModelIndex &index);
-
     void on_lvAnalisis_itemDoubleClicked(QListWidgetItem *item);
 
     void on_lvInformes_itemDoubleClicked(QListWidgetItem *item);
 
     void on_lvOtros_itemDoubleClicked(QListWidgetItem *item);
+
+    void on_pbGuardar_clicked();
+
+    void on_pbCapurarIris_clicked();
 
 private:
     void rellenarDatosPaciente(int idPaciente);
@@ -42,6 +44,7 @@ private:
     void llenarIris();
     void llenarAnalisis();
     void llenarInforme();
+    void llenarOtros();
 
     Ui::Consulta *ui;
     Conexion *conexion;
@@ -55,7 +58,8 @@ private:
     QString appUrl;
     QString appImagen;
     QString appVideo;
+    QString appTexto;
     QStringList configuracion;
-    QFileSystemModel *dirIris;
+    //QFileSystemModel *dirIris;
 };
 #endif // CONSULTA_H

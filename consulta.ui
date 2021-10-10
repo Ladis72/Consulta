@@ -66,14 +66,14 @@
         <string>Datos básicos</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_13">
-        <item row="1" column="2">
-         <widget class="QGroupBox" name="groupBox_9">
+        <item row="0" column="2">
+         <widget class="QGroupBox" name="groupBox_8">
           <property name="title">
-           <string>Otros</string>
+           <string>Informes</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_12">
+          <layout class="QGridLayout" name="gridLayout_11">
            <item row="0" column="0">
-            <widget class="QListWidget" name="lvOtros"/>
+            <widget class="QListWidget" name="lvInformes"/>
            </item>
           </layout>
          </widget>
@@ -90,66 +90,23 @@
           </layout>
          </widget>
         </item>
-        <item row="0" column="0" rowspan="2">
+        <item row="0" column="0" rowspan="3">
          <widget class="QTextEdit" name="teNotaPaciente"/>
         </item>
-        <item row="0" column="2">
-         <widget class="QGroupBox" name="groupBox_8">
-          <property name="title">
-           <string>Informes</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_11">
-           <item row="0" column="0">
-            <widget class="QListWidget" name="lvInformes"/>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="0" column="3" rowspan="2">
-         <widget class="QGroupBox" name="groupBox">
-          <property name="title">
-           <string>Medicación</string>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-          <property name="checkable">
-           <bool>false</bool>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_2">
-           <item row="3" column="3">
-            <widget class="QPushButton" name="pbModificarMedicacion">
-             <property name="text">
-              <string>Modificar</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="3">
-            <widget class="QLineEdit" name="lePosologia"/>
-           </item>
-           <item row="1" column="2">
-            <widget class="QLineEdit" name="leDosis"/>
-           </item>
-           <item row="0" column="2" colspan="2">
-            <widget class="QListView" name="lvMedicamentos"/>
-           </item>
-           <item row="2" column="2" colspan="2">
-            <widget class="QTextEdit" name="teNotasmedicamento"/>
-           </item>
-           <item row="3" column="2">
-            <widget class="QPushButton" name="pbAnadirMedicacion">
-             <property name="text">
-              <string>Añadir</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="2" column="0" colspan="4">
+        <item row="4" column="0" colspan="4">
          <widget class="QTableView" name="tableView"/>
         </item>
-        <item row="1" column="1">
+        <item row="3" column="0">
+         <widget class="QPushButton" name="pbGuardar">
+          <property name="text">
+           <string>Guardar</string>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+S</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
          <widget class="QGroupBox" name="groupBox_7">
           <property name="title">
            <string>Análisis</string>
@@ -159,6 +116,32 @@
             <widget class="QListWidget" name="lvAnalisis"/>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QGroupBox" name="groupBox_9">
+          <property name="title">
+           <string>Otros</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_12">
+           <item row="0" column="0">
+            <widget class="QListWidget" name="lvOtros"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="pbCapurarIris">
+          <property name="text">
+           <string>Capturar</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QPushButton" name="pbObtenerAnalisis">
+          <property name="text">
+           <string>Obtener</string>
+          </property>
          </widget>
         </item>
        </layout>
@@ -289,6 +272,18 @@
     </item>
     <item row="1" column="1">
      <widget class="QLabel" name="label">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>200</width>
+        <height>200</height>
+       </size>
+      </property>
       <property name="text">
        <string>TextLabel</string>
       </property>

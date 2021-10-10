@@ -14,6 +14,8 @@ Consulta::Consulta(QWidget *parent)
     configuracion.clear();
     //directorioTrabajo = funcion.getDirectorioTrabajo();
     cargarConfiguracion();
+
+
 }
 
 Consulta::~Consulta()
@@ -43,9 +45,17 @@ void Consulta::rellenarDatosPaciente(int idPaciente)
     ui->lNombre->setText(datosPaciente.at(1)+" "+datosPaciente.at(2)+" "+datosPaciente.at(3));
     qint64 edad = QDate::fromString(datosPaciente.at(11),"yyyy-MM-dd").daysTo(QDate::currentDate())/365;
     ui->lEdad->setText(QString::number(edad));
+    ui->teNotaPaciente->setText(datosPaciente.at(17));
+    QFile foto(directorioTrabajo+"/"+paciente+"/Foto.png");
+    if (foto.exists()) {
+        QPixmap pixmap(foto.fileName());
+        ui->label->setPixmap(pixmap.scaled(200,200,Qt::KeepAspectRatio));
+    }
     llenarIris();
     llenarAnalisis();
     llenarInforme();
+    llenarOtros();
+
 }
 
 void Consulta::cargarConfiguracion()
@@ -56,6 +66,7 @@ void Consulta::cargarConfiguracion()
     appUrl = configuracion.at(3);
     appImagen = configuracion.at(4);
     appVideo = configuracion.at(5);
+    appTexto = configuracion.at(6);
     qDebug() << configuracion;
 }
 
@@ -67,6 +78,7 @@ void Consulta::llenarIris()
       for(const QFileInfo finfo : directorioIris.entryList(QDir::Files)){
           ui->lvIris->addItem(finfo.fileName());
       }
+      ui->lvIris->sortItems(Qt::DescendingOrder);
 }
 
 void Consulta::llenarAnalisis()
@@ -77,7 +89,7 @@ void Consulta::llenarAnalisis()
     for(const QFileInfo finfo : directorioAnalisis.entryList(QDir::Files)){
         ui->lvAnalisis->addItem(finfo.fileName());
     }
-
+    ui->lvAnalisis->sortItems(Qt::DescendingOrder);
 }
 
 void Consulta::llenarInforme()
@@ -88,6 +100,19 @@ void Consulta::llenarInforme()
     for(const QFileInfo finfo : directorioInforme.entryList(QDir::Files)){
     ui->lvInformes->addItem(finfo.fileName());
     }
+    ui->lvInformes->sortItems(Qt::DescendingOrder);
+}
+
+void Consulta::llenarOtros()
+{
+    ui->lvOtros->clear();
+    QDir directorioOtros;
+    directorioOtros.setCurrent(directorioTrabajo+"/"+paciente);
+    qDebug() << directorioOtros;
+    for(const QFileInfo finfo : directorioOtros.entryInfoList(QDir::Files)){
+        ui->lvOtros->addItem(finfo.fileName());
+    }
+    ui->lvOtros->sortItems(Qt::DescendingOrder);
 }
 
 
@@ -162,6 +187,47 @@ void Consulta::on_lvInformes_itemDoubleClicked(QListWidgetItem *item)
 
 void Consulta::on_lvOtros_itemDoubleClicked(QListWidgetItem *item)
 {
+    QString otros = directorioTrabajo+"/"+paciente+"/"+item->text();
+    QFileInfo info(otros);
+    if (info.completeSuffix() == "jpg" or info.completeSuffix() == "png") {
+        QString programa = appImagen;
+        QStringList arg;
+        arg << otros.toLocal8Bit().constData();
+        QProcess *proc = new QProcess(this);
+        proc->start(programa,arg);
+    }
+    if (info.completeSuffix() == "pdf") {
+        QString programa = appPdf;
+        QStringList arg;
+        arg << otros.toLocal8Bit().constData();
+        QProcess *proc = new QProcess(this);
+        proc->start(programa,arg);
+    }
+    if (info.completeSuffix() == "txt") {
+        QString programa = appTexto;
+        QStringList arg;
+        arg << otros.toLocal8Bit().constData();
+        QProcess *proc = new QProcess(this);
+        proc->start(programa, arg);
+    }
+}
 
+
+void Consulta::on_pbGuardar_clicked()
+{
+    if (pacienteId==0) {
+        return;
+    }
+    qDebug() << (funcion.guardarDatosPaciente(pacienteId,ui->teNotaPaciente->toPlainText()) ? "Guardado" : "No guardado");
+}
+
+
+void Consulta::on_pbCapurarIris_clicked()
+{
+    QProcess *proc = new QProcess(this);
+    QStringList arg;
+//    arg << "v4l2:///dev/video0 --sout #transcode{vcodec=mp1v,vb=1024,scale=1,acodec=mpga,ab=192,channels=2}:duplicate{dst=std{access=file,mux=mpeg1,dst="+directorioTrabajo+"/"+paciente+"/tmp/test.mpg}}" ;
+    arg << "v4l2:///dev/video0" << " --sout=#transcode{vcodec=mp1v,vb=1024,scale=1,acodec=mpga,ab=192,channels=2}" << " --duplicate{dst=std{access=file,mux=mpeg1,dst="+directorioTrabajo+"/"+paciente+"/test.mpg}}" ;
+    proc->start(appVideo,arg);
 }
 
