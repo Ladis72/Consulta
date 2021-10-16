@@ -82,27 +82,27 @@ void Consulta::llenarIris()
 void Consulta::llenarAnalisis()
 {
     ui->lvAnalisis->clear();
-    QDir directorioAnalisis;
+    QDir directorioAnalisis(directorioTrabajo+"/"+paciente+"/Analisis");
     QStringList elementos = directorioAnalisis.entryList(QStringList() << "*.*" , QDir::Files);
-    ui->lvIris->addItems(elementos);
+    ui->lvAnalisis->addItems(elementos);
       ui->lvIris->sortItems(Qt::DescendingOrder);
 }
 
 void Consulta::llenarInforme()
 {
     ui->lvInformes->clear();
-    QDir directorioInforme;
+    QDir directorioInforme(directorioTrabajo+"/"+paciente+"/Informes");
     QStringList elementos = directorioInforme.entryList(QStringList() << "*.*" , QDir::Files);
-    ui->lvIris->addItems(elementos);
-      ui->lvIris->sortItems(Qt::DescendingOrder);
+    ui->lvInformes->addItems(elementos);
+      ui->lvInformes->sortItems(Qt::DescendingOrder);
 }
 
 void Consulta::llenarOtros()
 {
     ui->lvOtros->clear();
-    QDir directorioOtros;
+    QDir directorioOtros(directorioTrabajo+"/"+paciente);
     QStringList elementos = directorioOtros.entryList(QStringList() << "*.*" , QDir::Files);
-    ui->lvIris->addItems(elementos);
+    ui->lvOtros->addItems(elementos);
       ui->lvIris->sortItems(Qt::DescendingOrder);
 }
 
