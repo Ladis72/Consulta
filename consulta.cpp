@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QDate>
 #include <QProcess>
+#include <QDesktopServices>
 
 Consulta::Consulta(QWidget *parent)
     : QMainWindow(parent)
@@ -126,23 +127,26 @@ void Consulta::on_lvIris_itemDoubleClicked(QListWidgetItem *item)
 {
     QString ojo = directorioTrabajo+"/"+paciente+"/"+"Iris/"+item->text();
     QFileInfo info(ojo);
-    if(info.completeSuffix() == "jpg" or info.completeSuffix() == "png"){
-    QString programa = appImagen;
-    QStringList arg;
-    arg << ojo.toLocal8Bit().constData();
-    QProcess *proc = new QProcess(this);
-    proc->start(programa,arg);
-    }
-    if(info.completeSuffix() == "avi"){
-        QString programa = appVideo;
-        QStringList arg;
-        arg << ojo.toLocal8Bit().constData();
-        qDebug() << programa;
-        qDebug() << arg;
+//    if(info.completeSuffix() == "jpg" or info.completeSuffix() == "png"){
+//    QString programa = appImagen;
+//    QStringList arg;
+//    arg << ojo.toLocal8Bit().constData();
+//    QDesktopServices::openUrl(QUrl::fromLocalFile(ojo));
 
-        QProcess *proc = new QProcess(this);
-        proc->start(programa,arg);
-    }
+////    QProcess *proc = new QProcess(this);
+////    proc->start(programa,arg);
+//    }
+//    if(info.completeSuffix() == "avi"){
+//        QString programa = appVideo;
+//        QStringList arg;
+//        arg << ojo.toLocal8Bit().constData();
+//        qDebug() << programa;
+//        qDebug() << arg;
+        QDesktopServices::openUrl(QUrl::fromLocalFile(ojo));
+
+//        QProcess *proc = new QProcess(this);
+//        proc->start(programa,arg);
+//    }
 }
 
 
@@ -150,20 +154,22 @@ void Consulta::on_lvAnalisis_itemDoubleClicked(QListWidgetItem *item)
 {
     QString analisis = directorioTrabajo+"/"+paciente+"/"+"Analisis/"+item->text();
     QFileInfo info(analisis);
-    if (info.completeSuffix() == "jpg" or info.completeSuffix() == "png") {
-        QString programa = appImagen;
-        QStringList arg;
-        arg << analisis.toLocal8Bit().constData();
-        QProcess *proc = new QProcess(this);
-        proc->start(programa,arg);
-    }
-    if (info.completeSuffix() == "pdf") {
-        QString programa = appPdf;
-        QStringList arg;
-        arg << analisis.toLocal8Bit().constData();
-        QProcess *proc = new QProcess(this);
-        proc->start(programa,arg);
-    }
+//    if (info.completeSuffix() == "jpg" or info.completeSuffix() == "png") {
+//        QString programa = appImagen;
+//        QStringList arg;
+//        arg << analisis.toLocal8Bit().constData();
+//        QProcess *proc = new QProcess(this);
+//        proc->start(programa,arg);
+//    }
+//    if (info.completeSuffix() == "pdf") {
+//        QString programa = appPdf;
+//        QStringList arg;
+//        arg << analisis.toLocal8Bit().constData();
+//        QProcess *proc = new QProcess(this);
+//        proc->start(programa,arg);
+//    }
+    QDesktopServices::openUrl(QUrl::fromLocalFile(analisis));
+
 }
 
 
@@ -171,10 +177,12 @@ void Consulta::on_lvInformes_itemDoubleClicked(QListWidgetItem *item)
 {
     QString informe = directorioTrabajo+"/"+paciente+"/"+"/Informes/"+item->text();
     QString programa = appPdf;
-    QStringList arg;
-    arg << informe.toLocal8Bit().constData();
-    QProcess *proc = new QProcess(this);
-    proc->start(programa,arg);
+//    QStringList arg;
+//    arg << informe.toLocal8Bit().constData();
+//    QProcess *proc = new QProcess(this);
+//    proc->start(programa,arg);
+    QDesktopServices::openUrl(QUrl::fromLocalFile(informe));
+
 
 }
 
@@ -183,27 +191,29 @@ void Consulta::on_lvOtros_itemDoubleClicked(QListWidgetItem *item)
 {
     QString otros = directorioTrabajo+"/"+paciente+"/"+item->text();
     QFileInfo info(otros);
-    if (info.completeSuffix() == "jpg" or info.completeSuffix() == "png") {
-        QString programa = appImagen;
-        QStringList arg;
-        arg << otros.toLocal8Bit().constData();
-        QProcess *proc = new QProcess(this);
-        proc->start(programa,arg);
-    }
-    if (info.completeSuffix() == "pdf") {
-        QString programa = appPdf;
-        QStringList arg;
-        arg << otros.toLocal8Bit().constData();
-        QProcess *proc = new QProcess(this);
-        proc->start(programa,arg);
-    }
-    if (info.completeSuffix() == "txt") {
-        QString programa = appTexto;
-        QStringList arg;
-        arg << otros.toLocal8Bit().constData();
-        QProcess *proc = new QProcess(this);
-        proc->start(programa, arg);
-    }
+//    if (info.completeSuffix() == "jpg" or info.completeSuffix() == "png") {
+//        QString programa = appImagen;
+//        QStringList arg;
+//        arg << otros.toLocal8Bit().constData();
+//        QProcess *proc = new QProcess(this);
+//        proc->start(programa,arg);
+//    }
+//    if (info.completeSuffix() == "pdf") {
+//        QString programa = appPdf;
+//        QStringList arg;
+//        arg << otros.toLocal8Bit().constData();
+//        QProcess *proc = new QProcess(this);
+//        proc->start(programa,arg);
+//    }
+//    if (info.completeSuffix() == "txt") {
+//        QString programa = appTexto;
+//        QStringList arg;
+//        arg << otros.toLocal8Bit().constData();
+//        QProcess *proc = new QProcess(this);
+//        proc->start(programa, arg);
+//    }
+    QDesktopServices::openUrl(QUrl::fromLocalFile(otros));
+
 }
 
 
