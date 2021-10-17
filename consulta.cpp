@@ -137,6 +137,9 @@ void Consulta::on_lvIris_itemDoubleClicked(QListWidgetItem *item)
         QString programa = appVideo;
         QStringList arg;
         arg << ojo.toLocal8Bit().constData();
+        qDebug() << programa;
+        qDebug() << arg;
+
         QProcess *proc = new QProcess(this);
         proc->start(programa,arg);
     }

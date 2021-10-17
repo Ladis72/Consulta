@@ -50,7 +50,7 @@ void Configuracion::rellenarCampos()
 
 void Configuracion::on_pbPdf_clicked()
 {
-    QString directorio = QFileDialog::getExistingDirectory(this);
+    QString directorio = QFileDialog::getOpenFileName(this);
     ui->lePdf->setText(directorio);
     leerConfiguracion();
 }
@@ -58,7 +58,7 @@ void Configuracion::on_pbPdf_clicked()
 
 void Configuracion::on_pbUrl_clicked()
 {
-    QString directorio = QFileDialog::getExistingDirectory(this);
+    QString directorio = QFileDialog::getOpenFileName(this);
     ui->leUrl->setText(directorio);
     leerConfiguracion();
 }
@@ -66,7 +66,7 @@ void Configuracion::on_pbUrl_clicked()
 
 void Configuracion::on_pbImagen_clicked()
 {
-    QString directorio = QFileDialog::getExistingDirectory(this);
+    QString directorio = QFileDialog::getOpenFileName(this);
     ui->leImagen->setText(directorio);
     leerConfiguracion();
 }
@@ -74,7 +74,7 @@ void Configuracion::on_pbImagen_clicked()
 
 void Configuracion::on_pbVideo_clicked()
 {
-    QString directorio = QFileDialog::getExistingDirectory(this);
+    QString directorio = QFileDialog::getOpenFileName(this);
     ui->leVideo->setText(directorio);
     leerConfiguracion();
 }
@@ -118,6 +118,9 @@ void Configuracion::on_leVideo_editingFinished()
 
 void Configuracion::on_pushButton_clicked()
 {
+    QString directorio = QFileDialog::getOpenFileName(this);
+    ui->leTexto->setText(directorio);
+    leerConfiguracion();
 }
 
 
