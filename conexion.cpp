@@ -4,11 +4,11 @@
 
 Conexion::Conexion(QObject *parent) : QObject(parent)
 {
-    dbHost = configDb.value("host").toString();
-    dbBase = configDb.value("base").toString();
-    dbUsuario = configDb.value("usuario").toString();
-    dbContrasena = configDb.value("contrasena").toString();
-    dbPuerto = configDb.value("puerto").toString();
+    dbHost = "127.0.0.1"; // configDb.value("host").toString();
+    dbBase = "consulta"; // configDb.value("base").toString();
+    dbUsuario = "ladis"; // configDb.value("usuario").toString();
+    dbContrasena = "meganizado72"; // configDb.value("contrasena").toString();
+    dbPuerto = "3306"; // configDb.value("puerto").toString();
 
     qDebug() << dbHost;
     qDebug() << dbBase;
