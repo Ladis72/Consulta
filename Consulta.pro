@@ -17,7 +17,8 @@ SOURCES += \
     main.cpp \
     consulta.cpp \
     nuevopaciente.cpp \
-    pacientes.cpp
+    pacientes.cpp \
+    tomardatos.cpp
 
 HEADERS += \
     conexion.h \
@@ -26,14 +27,16 @@ HEADERS += \
     dbfunc.h \
     loggin.h \
     nuevopaciente.h \
-    pacientes.h
+    pacientes.h \
+    tomardatos.h
 
 FORMS += \
     configuracion.ui \
     consulta.ui \
     loggin.ui \
     nuevopaciente.ui \
-    pacientes.ui
+    pacientes.ui \
+    tomardatos.ui
 
 TRANSLATIONS += \
     Consulta_es_ES.ts

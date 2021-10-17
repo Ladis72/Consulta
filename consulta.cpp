@@ -11,10 +11,11 @@ Consulta::Consulta(QWidget *parent)
 {
     ui->setupUi(this);
     pacienteId = 0;
+    idVisita = 0;
     funcion.funcionaDB();
     configuracion.clear();
     cargarConfiguracion();
-
+    llenarHistoricoDatos();
 }
 
 Consulta::~Consulta()
@@ -46,7 +47,7 @@ void Consulta::rellenarDatosPaciente(int idPaciente)
     ui->lEdad->setText(QString::number(edad));
     ui->teNotaPaciente->setText(datosPaciente.at(17));
     ui->label->clear();
-    QFile foto(directorioTrabajo+"/"+paciente+"/Foto.png");
+    QFile foto(directorioTrabajo+"/"+paciente+"/XFoto.png");
     if (foto.exists()) {
         QPixmap pixmap(foto.fileName());
         ui->label->setPixmap(pixmap.scaled(200,200,Qt::KeepAspectRatio ));
@@ -55,6 +56,10 @@ void Consulta::rellenarDatosPaciente(int idPaciente)
     llenarAnalisis();
     llenarInforme();
     llenarOtros();
+    historicoDatos->setFilter("idPaciente = '"+QString::number(pacienteId)+"'");
+
+
+
 
 }
 
@@ -103,7 +108,19 @@ void Consulta::llenarOtros()
     QDir directorioOtros(directorioTrabajo+"/"+paciente);
     QStringList elementos = directorioOtros.entryList(QStringList() << "*.*" , QDir::Files);
     ui->lvOtros->addItems(elementos);
-      ui->lvIris->sortItems(Qt::DescendingOrder);
+    ui->lvIris->sortItems(Qt::DescendingOrder);
+}
+
+void Consulta::llenarHistoricoDatos()
+{
+    historicoDatos = funcion.llenarHistoricoDatos(pacienteId);
+    ui->tWHistoricoDatos->setModel(historicoDatos);
+    ui->tWHistoricoDatos->hideColumn(0);
+    ui->tWHistoricoDatos->hideColumn(1);
+    for (int i = 10;i<14 ;i++ ) {
+        ui->tWHistoricoDatos->hideColumn(i);
+    }
+
 }
 
 
@@ -232,5 +249,29 @@ void Consulta::on_pbCapurarIris_clicked()
 //    arg << "v4l2:///dev/video0 --sout #transcode{vcodec=mp1v,vb=1024,scale=1,acodec=mpga,ab=192,channels=2}:duplicate{dst=std{access=file,mux=mpeg1,dst="+directorioTrabajo+"/"+paciente+"/tmp/test.mpg}}" ;
     arg << "v4l2:///dev/video0" << " --sout=#transcode{vcodec=mp1v,vb=1024,scale=1,acodec=mpga,ab=192,channels=2}" << " --duplicate{dst=std{access=file,mux=mpeg1,dst="+directorioTrabajo+"/"+paciente+"/test.mpg}}" ;
     proc->start(appVideo,arg);
+}
+
+
+void Consulta::on_pbTomarDatos_clicked()
+{
+    if (pacienteId == 0) {
+        QMessageBox::information(this,"Seleccione paciente","Debe seleccionar un paciente al que asignarle los datos");
+        return;
+    }
+    QStringList datosHoy;
+    datosHoy.clear();
+    datosDlg = new tomarDatos(this);
+    if (datosDlg->exec() && datosDlg->Accepted) {
+        datosHoy << QString::number(pacienteId);
+        datosHoy << datosDlg->datos;
+        qDebug() << datosHoy;
+        funcion.guardarDatosHoy(datosHoy);
+    }
+}
+
+
+void Consulta::on_tWHistoricoDatos_doubleClicked(const QModelIndex &index)
+{
+
 }
 

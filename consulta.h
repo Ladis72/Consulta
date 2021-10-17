@@ -5,6 +5,7 @@
 #include "conexion.h"
 #include "pacientes.h"
 #include "configuracion.h"
+#include "tomardatos.h"
 #include <QMainWindow>
 #include <QFileSystemModel>
 #include <QListWidgetItem>
@@ -38,6 +39,10 @@ private slots:
 
     void on_pbCapurarIris_clicked();
 
+    void on_pbTomarDatos_clicked();
+
+    void on_tWHistoricoDatos_doubleClicked(const QModelIndex &index);
+
 private:
     void rellenarDatosPaciente(int idPaciente);
     void cargarConfiguracion();
@@ -45,13 +50,16 @@ private:
     void llenarAnalisis();
     void llenarInforme();
     void llenarOtros();
+    void llenarHistoricoDatos();
 
     Ui::Consulta *ui;
     Conexion *conexion;
     dbFunc funcion;
     Pacientes *pacienteDlg;
     Configuracion *confDlg;
+    tomarDatos *datosDlg;
     int pacienteId;
+    int idVisita;
     QString paciente;
     QString directorioTrabajo;
     QString appPdf;
@@ -60,6 +68,7 @@ private:
     QString appVideo;
     QString appTexto;
     QStringList configuracion;
+    QSqlTableModel *historicoDatos;
     //QFileSystemModel *dirIris;
 };
 #endif // CONSULTA_H

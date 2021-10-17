@@ -131,6 +131,29 @@ bool dbFunc::guardarDatosPaciente(int idPaciente, QString datos)
     return consulta.exec() ? true : false;
 }
 
+bool dbFunc::guardarDatosHoy(QStringList datos)
+{
+    QSqlQuery consulta(QSqlDatabase::database("DB"));
+    consulta.prepare("INSERT INTO visitas (idPaciente, fecha, hora, peso, altura, sist, diast, pulsaciones, estomago) VALUES (?,?,?,?,?,?,?,?,?)");
+    for (int i = 0 ;i < datos.count() ;i++ ) {
+        consulta.bindValue(i,datos.at(i));
+    }
+    if (consulta.exec()) {
+        return true;
+    }
+    qDebug() << consulta.lastError().text();
+    return false;
+}
+
+QSqlTableModel *dbFunc::llenarHistoricoDatos(int filtro)
+{
+    QSqlTableModel *historicoDatosTableModel = new QSqlTableModel(this, QSqlDatabase::database("DB"));
+    historicoDatosTableModel->setTable("visitas");
+    historicoDatosTableModel->setSort(0,Qt::DescendingOrder);
+    historicoDatosTableModel->select();
+    return historicoDatosTableModel;
+}
+
 QString dbFunc::getDirectorioTrabajo()
 {
     QSqlQuery consulta(QSqlDatabase::database("DB"));

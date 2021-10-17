@@ -23,6 +23,8 @@ public:
     QStringList getConfiguracion();
     bool setConfiguracion(QStringList configuracion);
     bool guardarDatosPaciente(int idPaciente, QString datos);
+    bool guardarDatosHoy(QStringList datos);
+    QSqlTableModel *llenarHistoricoDatos(int filtro);
 
 signals:
 

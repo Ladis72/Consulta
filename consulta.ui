@@ -15,6 +15,62 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="pbPacientes">
+      <property name="text">
+       <string>Pacientes</string>
+      </property>
+      <property name="icon">
+       <iconset resource="iconos.qrc">
+        <normaloff>:/iconos/demographic.png</normaloff>:/iconos/demographic.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="label">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>200</width>
+        <height>200</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+      <property name="openExternalLinks">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="pbImprimir">
+      <property name="text">
+       <string>Imprimir</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>:/new/ico/iconos/Printer_Picture.png</normaloff>:/new/ico/iconos/Printer_Picture.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="3">
      <widget class="QPushButton" name="pbSalir">
       <property name="text">
@@ -41,7 +97,7 @@
        <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="elideMode">
        <enum>Qt::ElideNone</enum>
@@ -93,9 +149,6 @@
         <item row="0" column="0" rowspan="3">
          <widget class="QTextEdit" name="teNotaPaciente"/>
         </item>
-        <item row="4" column="0" colspan="4">
-         <widget class="QTableView" name="tableView"/>
-        </item>
         <item row="3" column="0">
          <widget class="QPushButton" name="pbGuardar">
           <property name="text">
@@ -146,10 +199,74 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tabTratamientos">
+      <widget class="QWidget" name="tabConsultas">
        <attribute name="title">
-        <string>Tratamientos</string>
+        <string>Consultas</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pbTomarDatos">
+          <property name="text">
+           <string>Tomar datos básicos</string>
+          </property>
+          <property name="icon">
+           <iconset resource="iconos.qrc">
+            <normaloff>:/iconos/presion-arterial.png</normaloff>:/iconos/presion-arterial.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>25</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QTableView" name="tWHistoricoDatos"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pbMedidaCorporal">
+          <property name="text">
+           <string>Tomar datos antropométricos</string>
+          </property>
+          <property name="icon">
+           <iconset resource="iconos.qrc">
+            <normaloff>:/iconos/medidas.ico</normaloff>:/iconos/medidas.ico</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>25</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" colspan="2">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string>Notas</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_3">
+            <property name="text">
+             <string>Tratamiento</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="text">
+             <string>Finalizar consulta</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -185,40 +302,6 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="pbImprimir">
-      <property name="text">
-       <string>Imprimir</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>:/new/ico/iconos/Printer_Picture.png</normaloff>:/new/ico/iconos/Printer_Picture.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>40</width>
-        <height>40</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="pbPacientes">
-      <property name="text">
-       <string>Pacientes</string>
-      </property>
-      <property name="icon">
-       <iconset resource="iconos.qrc">
-        <normaloff>:/iconos/demographic.png</normaloff>:/iconos/demographic.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>40</width>
-        <height>40</height>
-       </size>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="2">
      <widget class="QPushButton" name="pbConfiguracion">
       <property name="text">
@@ -236,61 +319,8 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="3">
-     <widget class="QPushButton" name="pbMedidaCorporal">
-      <property name="text">
-       <string>Tomar datos antropométricos</string>
-      </property>
-      <property name="icon">
-       <iconset resource="iconos.qrc">
-        <normaloff>:/iconos/medidas.ico</normaloff>:/iconos/medidas.ico</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>25</width>
-        <height>25</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QPushButton" name="pbTomarDatos">
-      <property name="text">
-       <string>Tomar datos básicos</string>
-      </property>
-      <property name="icon">
-       <iconset resource="iconos.qrc">
-        <normaloff>:/iconos/presion-arterial.png</normaloff>:/iconos/presion-arterial.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>25</width>
-        <height>25</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="label">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>200</width>
-        <height>200</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-      <property name="openExternalLinks">
-       <bool>false</bool>
-      </property>
-     </widget>
+    <item row="3" column="0" colspan="4">
+     <widget class="QTableWidget" name="twVisitas"/>
     </item>
    </layout>
   </widget>
