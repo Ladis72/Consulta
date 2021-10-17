@@ -13,9 +13,7 @@ Consulta::Consulta(QWidget *parent)
     pacienteId = 0;
     funcion.funcionaDB();
     configuracion.clear();
-    //directorioTrabajo = funcion.getDirectorioTrabajo();
     cargarConfiguracion();
-
 
 }
 
@@ -47,6 +45,7 @@ void Consulta::rellenarDatosPaciente(int idPaciente)
     qint64 edad = QDate::fromString(datosPaciente.at(11),"yyyy-MM-dd").daysTo(QDate::currentDate())/365;
     ui->lEdad->setText(QString::number(edad));
     ui->teNotaPaciente->setText(datosPaciente.at(17));
+    ui->label->clear();
     QFile foto(directorioTrabajo+"/"+paciente+"/Foto.png");
     if (foto.exists()) {
         QPixmap pixmap(foto.fileName());
@@ -126,15 +125,15 @@ void Consulta::on_pbConfiguracion_clicked()
 void Consulta::on_lvIris_itemDoubleClicked(QListWidgetItem *item)
 {
     QString ojo = directorioTrabajo+"/"+paciente+"/"+"Iris/"+item->text();
-    QFileInfo info(ojo);
+//    QFileInfo info(ojo);
 //    if(info.completeSuffix() == "jpg" or info.completeSuffix() == "png"){
 //    QString programa = appImagen;
 //    QStringList arg;
 //    arg << ojo.toLocal8Bit().constData();
 //    QDesktopServices::openUrl(QUrl::fromLocalFile(ojo));
 
-////    QProcess *proc = new QProcess(this);
-////    proc->start(programa,arg);
+//    QProcess *proc = new QProcess(this);
+//    proc->start(programa,arg);
 //    }
 //    if(info.completeSuffix() == "avi"){
 //        QString programa = appVideo;
@@ -153,7 +152,7 @@ void Consulta::on_lvIris_itemDoubleClicked(QListWidgetItem *item)
 void Consulta::on_lvAnalisis_itemDoubleClicked(QListWidgetItem *item)
 {
     QString analisis = directorioTrabajo+"/"+paciente+"/"+"Analisis/"+item->text();
-    QFileInfo info(analisis);
+//    QFileInfo info(analisis);
 //    if (info.completeSuffix() == "jpg" or info.completeSuffix() == "png") {
 //        QString programa = appImagen;
 //        QStringList arg;
@@ -176,7 +175,7 @@ void Consulta::on_lvAnalisis_itemDoubleClicked(QListWidgetItem *item)
 void Consulta::on_lvInformes_itemDoubleClicked(QListWidgetItem *item)
 {
     QString informe = directorioTrabajo+"/"+paciente+"/"+"/Informes/"+item->text();
-    QString programa = appPdf;
+//    QString programa = appPdf;
 //    QStringList arg;
 //    arg << informe.toLocal8Bit().constData();
 //    QProcess *proc = new QProcess(this);
@@ -190,7 +189,7 @@ void Consulta::on_lvInformes_itemDoubleClicked(QListWidgetItem *item)
 void Consulta::on_lvOtros_itemDoubleClicked(QListWidgetItem *item)
 {
     QString otros = directorioTrabajo+"/"+paciente+"/"+item->text();
-    QFileInfo info(otros);
+//    QFileInfo info(otros);
 //    if (info.completeSuffix() == "jpg" or info.completeSuffix() == "png") {
 //        QString programa = appImagen;
 //        QStringList arg;
