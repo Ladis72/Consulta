@@ -39,7 +39,6 @@ void Pacientes::on_nuevoBtn_clicked()
 void Pacientes::on_tableView_clicked(const QModelIndex &index)
 {
     pacienteId = modeloPacientes->data(modeloPacientes->index(index.row(),0),Qt::EditRole).toInt();
-    qDebug() << pacienteId;
 }
 
 
@@ -61,5 +60,12 @@ void Pacientes::on_pushButton_clicked()
     ui->tableView->setModel(modeloPacientes);
 
 
+}
+
+
+void Pacientes::on_tableView_doubleClicked(const QModelIndex &index)
+{
+    pacienteId = modeloPacientes->data(modeloPacientes->index(index.row(),0),Qt::EditRole).toInt();
+    ui->buttonBox->accepted();
 }
 
