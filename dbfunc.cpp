@@ -1,4 +1,5 @@
 #include "dbfunc.h"
+#include <QTime>
 
 #include <QDebug>
 
@@ -152,6 +153,48 @@ QSqlTableModel *dbFunc::llenarHistoricoDatos(int filtro)
     historicoDatosTableModel->setSort(0,Qt::DescendingOrder);
     historicoDatosTableModel->select();
     return historicoDatosTableModel;
+}
+
+int dbFunc::idVisitaActual(int idPaciente)
+{
+    QSqlQuery consulta(QSqlDatabase::database("DB"));
+    consulta.prepare("SELECT idVisita FROM visitas WHERE idPaciente = ?");
+    consulta.bindValue(0,QString::number(idPaciente));
+    if (consulta.exec()) {
+        consulta.last();
+        qDebug() << consulta.lastError().text();
+        return consulta.value(0).toInt();
+    }
+    return 0;
+}
+
+bool dbFunc::finalizarVisita(int visita, QString tipo)
+{
+    QSqlQuery consulta(QSqlDatabase::database("DB"));
+    consulta.prepare("SELECT hora FROM visitas WHERE idVisita = ?");
+    consulta.bindValue(0,visita);
+    if (!consulta.exec()) {
+        consulta.first();
+        qDebug() << consulta.lastError();
+        return false;
+        }
+    consulta.first();
+    int duracion = consulta.value(0).toTime().msecsTo(QTime::currentTime());
+    qDebug() << consulta.value(0);
+    qDebug() << consulta.value(0).toTime();
+    qDebug() << QTime::currentTime();
+    qDebug() << "Duraciom = " << duracion;
+    consulta.clear();
+    consulta.prepare("UPDATE visitas SET tipoVisita =? , duracion =? WHERE idVisita = ?");
+    consulta.bindValue(0,tipo);
+    consulta.bindValue(1,(duracion/60000));
+    consulta.bindValue(2,visita);
+    if (!consulta.exec()) {
+        qDebug() << "ERROR " << consulta.lastError();
+        qDebug() << "ERROR " << consulta.lastError().text();
+        return false;
+        }
+    return true;
 }
 
 QString dbFunc::getDirectorioTrabajo()

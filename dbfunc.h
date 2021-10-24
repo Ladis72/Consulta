@@ -25,6 +25,8 @@ public:
     bool guardarDatosPaciente(int idPaciente, QString datos);
     bool guardarDatosHoy(QStringList datos);
     QSqlTableModel *llenarHistoricoDatos(int filtro);
+    int idVisitaActual(int idPaciente);
+    bool finalizarVisita(int visita, QString tipo);
 
 signals:
 

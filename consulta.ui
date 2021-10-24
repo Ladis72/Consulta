@@ -47,7 +47,7 @@
        </size>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string/>
       </property>
       <property name="openExternalLinks">
        <bool>false</bool>
@@ -122,6 +122,28 @@
         <string>Datos básicos</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_13">
+        <item row="0" column="0" rowspan="3">
+         <widget class="QTextEdit" name="teNotaPaciente"/>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="pbCapurarIris">
+          <property name="text">
+           <string>Capturar</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QGroupBox" name="groupBox_7">
+          <property name="title">
+           <string>Análisis</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_10">
+           <item row="0" column="0">
+            <widget class="QListWidget" name="lvAnalisis"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
         <item row="0" column="2">
          <widget class="QGroupBox" name="groupBox_8">
           <property name="title">
@@ -146,9 +168,6 @@
           </layout>
          </widget>
         </item>
-        <item row="0" column="0" rowspan="3">
-         <widget class="QTextEdit" name="teNotaPaciente"/>
-        </item>
         <item row="3" column="0">
          <widget class="QPushButton" name="pbGuardar">
           <property name="text">
@@ -157,18 +176,6 @@
           <property name="shortcut">
            <string>Ctrl+S</string>
           </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QGroupBox" name="groupBox_7">
-          <property name="title">
-           <string>Análisis</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_10">
-           <item row="0" column="0">
-            <widget class="QListWidget" name="lvAnalisis"/>
-           </item>
-          </layout>
          </widget>
         </item>
         <item row="2" column="2">
@@ -181,13 +188,6 @@
             <widget class="QListWidget" name="lvOtros"/>
            </item>
           </layout>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QPushButton" name="pbCapurarIris">
-          <property name="text">
-           <string>Capturar</string>
-          </property>
          </widget>
         </item>
         <item row="3" column="1">
@@ -204,26 +204,6 @@
         <string>Consultas</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pbTomarDatos">
-          <property name="text">
-           <string>Tomar datos básicos</string>
-          </property>
-          <property name="icon">
-           <iconset resource="iconos.qrc">
-            <normaloff>:/iconos/presion-arterial.png</normaloff>:/iconos/presion-arterial.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QTableView" name="tWHistoricoDatos"/>
-        </item>
         <item row="0" column="1">
          <widget class="QPushButton" name="pbMedidaCorporal">
           <property name="text">
@@ -241,30 +221,51 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="1" colspan="2">
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <widget class="QPushButton" name="pushButton">
-            <property name="text">
-             <string>Notas</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_3">
-            <property name="text">
-             <string>Tratamiento</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_2">
-            <property name="text">
-             <string>Finalizar consulta</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+        <item row="1" column="0">
+         <widget class="QTableView" name="tWHistoricoDatos">
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContents</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::DoubleClicked</set>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pbTomarDatos">
+          <property name="text">
+           <string>Tomar datos básicos</string>
+          </property>
+          <property name="icon">
+           <iconset resource="iconos.qrc">
+            <normaloff>:/iconos/presion-arterial.png</normaloff>:/iconos/presion-arterial.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>25</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QTableView" name="twVisitas"/>
+        </item>
+        <item row="2" column="1">
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>Finalizar consulta</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -282,7 +283,7 @@
          </font>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -296,7 +297,7 @@
          </font>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -318,9 +319,6 @@
        </size>
       </property>
      </widget>
-    </item>
-    <item row="3" column="0" colspan="4">
-     <widget class="QTableWidget" name="twVisitas"/>
     </item>
    </layout>
   </widget>

@@ -43,6 +43,10 @@ private slots:
 
     void on_tWHistoricoDatos_doubleClicked(const QModelIndex &index);
 
+    void on_twVisitas_clicked(const QModelIndex &index);
+
+    void on_pushButton_2_clicked();
+
 private:
     void rellenarDatosPaciente(int idPaciente);
     void cargarConfiguracion();

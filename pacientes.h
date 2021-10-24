@@ -29,6 +29,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_tableView_doubleClicked(const QModelIndex &index);
+
 private:
 
     Ui::Pacientes *ui;

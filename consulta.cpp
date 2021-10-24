@@ -4,6 +4,7 @@
 #include <QDate>
 #include <QProcess>
 #include <QDesktopServices>
+#include <QInputDialog>
 
 Consulta::Consulta(QWidget *parent)
     : QMainWindow(parent)
@@ -15,7 +16,7 @@ Consulta::Consulta(QWidget *parent)
     funcion.funcionaDB();
     configuracion.clear();
     cargarConfiguracion();
-    llenarHistoricoDatos();
+    //llenarHistoricoDatos();
 }
 
 Consulta::~Consulta()
@@ -30,10 +31,31 @@ void Consulta::on_pbPacientes_clicked()
     if(pacienteDlg->exec()){
         pacienteId = pacienteDlg->pacienteId;
         qDebug() << pacienteId;
+        llenarHistoricoDatos();
         rellenarDatosPaciente(pacienteId);
+        idVisita = 0;
     }
 
     return;
+
+}
+
+void Consulta::llenarHistoricoDatos()
+{
+    historicoDatos = funcion.llenarHistoricoDatos(pacienteId);
+    ui->tWHistoricoDatos->setModel(historicoDatos);
+    ui->tWHistoricoDatos->hideColumn(0);
+    ui->tWHistoricoDatos->hideColumn(1);
+    for (int i = 10;i<14 ;i++ ) {
+        ui->tWHistoricoDatos->hideColumn(i);
+    }
+    ui->twVisitas->setModel(historicoDatos);
+    ui->twVisitas->hideColumn(0);
+    ui->twVisitas->hideColumn(1);
+    for (int i = 3; i < 10; i++ ) {
+        ui->twVisitas->hideColumn(i);
+    }
+    ui->twVisitas->resizeColumnsToContents();
 
 }
 
@@ -57,10 +79,6 @@ void Consulta::rellenarDatosPaciente(int idPaciente)
     llenarInforme();
     llenarOtros();
     historicoDatos->setFilter("idPaciente = '"+QString::number(pacienteId)+"'");
-
-
-
-
 }
 
 void Consulta::cargarConfiguracion()
@@ -111,17 +129,6 @@ void Consulta::llenarOtros()
     ui->lvIris->sortItems(Qt::DescendingOrder);
 }
 
-void Consulta::llenarHistoricoDatos()
-{
-    historicoDatos = funcion.llenarHistoricoDatos(pacienteId);
-    ui->tWHistoricoDatos->setModel(historicoDatos);
-    ui->tWHistoricoDatos->hideColumn(0);
-    ui->tWHistoricoDatos->hideColumn(1);
-    for (int i = 10;i<14 ;i++ ) {
-        ui->tWHistoricoDatos->hideColumn(i);
-    }
-
-}
 
 
 void Consulta::on_pbConfiguracion_clicked()
@@ -267,11 +274,44 @@ void Consulta::on_pbTomarDatos_clicked()
         qDebug() << datosHoy;
         funcion.guardarDatosHoy(datosHoy);
     }
+    historicoDatos->setFilter("idPaciente = '"+QString::number(pacienteId)+"'");
+    idVisita = funcion.idVisitaActual(pacienteId);
 }
 
 
 void Consulta::on_tWHistoricoDatos_doubleClicked(const QModelIndex &index)
 {
+    qDebug() << pacienteId;
+    qDebug() << idVisita;
 
+}
+
+
+
+
+void Consulta::on_twVisitas_clicked(const QModelIndex &index)
+{
+    ui->twVisitas->resizeColumnsToContents();
+
+}
+
+
+void Consulta::on_pushButton_2_clicked()
+{
+    if (idVisita == 0) {
+        QMessageBox::information(this,"Sin visita","Actualmente no se está editando un a visita");
+        return;
+    }
+    QStringList opciones;
+    opciones << "Consulta" << "Vistazo";
+    bool ok;
+    QString item = QInputDialog::getItem(this,"Tipo de consulta","Tipo",opciones,0,false,&ok);
+    if (ok && !item.isEmpty()) {
+        if (item == "Consulta") {
+            funcion.finalizarVisita(idVisita,"C");
+        }else{
+                funcion.finalizarVisita(idVisita,"V");
+    }
+    }
 }
 
