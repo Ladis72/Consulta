@@ -295,23 +295,3 @@ void Consulta::on_twVisitas_clicked(const QModelIndex &index)
 
 }
 
-
-void Consulta::on_pushButton_2_clicked()
-{
-    if (idVisita == 0) {
-        QMessageBox::information(this,"Sin visita","Actualmente no se está editando un a visita");
-        return;
-    }
-    QStringList opciones;
-    opciones << "Consulta" << "Vistazo";
-    bool ok;
-    QString item = QInputDialog::getItem(this,"Tipo de consulta","Tipo",opciones,0,false,&ok);
-    if (ok && !item.isEmpty()) {
-        if (item == "Consulta") {
-            funcion.finalizarVisita(idVisita,"C");
-        }else{
-                funcion.finalizarVisita(idVisita,"V");
-    }
-    }
-}
-
