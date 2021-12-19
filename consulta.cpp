@@ -68,6 +68,7 @@ void Consulta::rellenarDatosPaciente(int idPaciente)
     qint64 edad = QDate::fromString(datosPaciente.at(11),"yyyy-MM-dd").daysTo(QDate::currentDate())/365;
     ui->lEdad->setText(QString::number(edad));
     ui->lOtrosDatos->setText(datosPaciente.at(5)+"  "+datosPaciente.at(6)+"  "+datosPaciente.at(10));
+    ui->labelTelefono->setText(datosPaciente.at(8));
     ui->teNotaPaciente->setText(datosPaciente.at(17));
     ui->label->clear();
     QFile foto(directorioTrabajo+"/"+paciente+"/XFoto.png");
