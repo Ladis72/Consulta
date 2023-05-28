@@ -27,7 +27,10 @@ void Configuracion::leerConfiguracion()
     configuracion.replace(4, ui->leImagen->text());
     configuracion.replace(5, ui->leVideo->text());
     configuracion.replace(6, ui->leTexto->text());
+    configuracion.replace(7, ui->leComandoVideo->text());
+    qDebug() << configuracion;
 }
+
 
 
 void Configuracion::on_pbDirectorioTrabajo_clicked()
@@ -45,6 +48,7 @@ void Configuracion::rellenarCampos()
     ui->leImagen->setText(configuracion.at(4));
     ui->leVideo->setText(configuracion.at(5));
     ui->leTexto->setText(configuracion.at(6));
+    ui->leComandoVideo->setText(configuracion.at(7));
 }
 
 
@@ -125,6 +129,20 @@ void Configuracion::on_pushButton_clicked()
 
 
 void Configuracion::on_leTexto_editingFinished()
+{
+    leerConfiguracion();
+}
+
+
+void Configuracion::on_pushButtonVideo_clicked()
+{
+    QString directorio = QFileDialog::getOpenFileName(this);
+    ui->leComandoVideo->setText(directorio);
+    leerConfiguracion();
+}
+
+
+void Configuracion::on_leComandoVideo_editingFinished()
 {
     leerConfiguracion();
 }

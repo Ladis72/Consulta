@@ -70,6 +70,7 @@ private:
     QString appImagen;
     QString appVideo;
     QString appTexto;
+    QString comandoVideo;
     QStringList configuracion;
     QSqlTableModel *historicoDatos;
     //QFileSystemModel *dirIris;

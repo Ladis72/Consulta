@@ -92,6 +92,7 @@ void Consulta::cargarConfiguracion()
     appImagen = configuracion.at(4);
     appVideo = configuracion.at(5);
     appTexto = configuracion.at(6);
+    comandoVideo = configuracion.at(7);
     qDebug() << configuracion;
 }
 
@@ -256,7 +257,8 @@ void Consulta::on_pbCapurarIris_clicked()
     QProcess *proc = new QProcess(this);
     QStringList arg;
 //    arg << "v4l2:///dev/video0 --sout #transcode{vcodec=mp1v,vb=1024,scale=1,acodec=mpga,ab=192,channels=2}:duplicate{dst=std{access=file,mux=mpeg1,dst="+directorioTrabajo+"/"+paciente+"/tmp/test.mpg}}" ;
-    arg << "v4l2:///dev/video0" << " --sout=#transcode{vcodec=mp1v,vb=1024,scale=1,acodec=mpga,ab=192,channels=2}" << " --duplicate{dst=std{access=file,mux=mpeg1,dst="+directorioTrabajo+"/"+paciente+"/test.mpg}}" ;
+//    arg << "v4l2:///dev/video0" << " --sout=#transcode{vcodec=mp1v,vb=1024,scale=1,acodec=mpga,ab=192,channels=2}" << " --duplicate{dst=std{access=file,mux=mpeg1,dst="+directorioTrabajo+"/"+paciente+"/test.mpg}}" ;
+    arg << comandoVideo;
     proc->start(appVideo,arg);
 }
 

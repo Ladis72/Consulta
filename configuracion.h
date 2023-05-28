@@ -43,6 +43,10 @@ private slots:
 
     void on_leTexto_editingFinished();
 
+    void on_pushButtonVideo_clicked();
+
+    void on_leComandoVideo_editingFinished();
+
 private:
     Ui::Configuracion *ui;
     void rellenarCampos();

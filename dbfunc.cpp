@@ -109,7 +109,7 @@ QStringList dbFunc::getConfiguracion()
 bool dbFunc::setConfiguracion(QStringList configuracion)
 {
     QSqlQuery consulta(QSqlDatabase::database("DB"));
-    consulta.prepare("UPDATE configuracion SET directorio = ? , pdf = ? , web = ? , imagen = ? , video = ? , texto = ? WHERE id = 0");
+    consulta.prepare("UPDATE configuracion SET directorio = ? , pdf = ? , web = ? , imagen = ? , video = ? , texto = ? , comandoVideo = ? WHERE id = 0");
     for (int i = 0;i < configuracion.length()-1 ;i++ ) {
         consulta.bindValue(i,configuracion.at(i+1));
         }

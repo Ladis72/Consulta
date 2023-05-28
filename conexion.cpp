@@ -6,8 +6,8 @@ Conexion::Conexion(QObject *parent) : QObject(parent)
 {
     dbHost = "127.0.0.1"; // configDb.value("host").toString();
     dbBase = "consulta"; // configDb.value("base").toString();
-    dbUsuario = "ladis"; // configDb.value("usuario").toString();
-    dbContrasena = "meganizado72"; // configDb.value("contrasena").toString();
+    dbUsuario = "root"; // configDb.value("usuario").toString();
+    dbContrasena = "meganizado"; // configDb.value("contrasena").toString();
     dbPuerto = "3306"; // configDb.value("puerto").toString();
 
     qDebug() << dbHost;
