@@ -38,7 +38,7 @@ void NuevoPaciente::on_pbAceptar_clicked()
         modeloDirectorio->mkdir(modeloDirectorio->setRootPath(funcion->getDirectorioTrabajo()+"/"+directorio),"Iris");
         modeloDirectorio->mkdir(modeloDirectorio->setRootPath(funcion->getDirectorioTrabajo()+"/"+directorio),"Analisis");
         modeloDirectorio->mkdir(modeloDirectorio->setRootPath(funcion->getDirectorioTrabajo()+"/"+directorio),"Informes");
-
+        accept();
     }else {
         qDebug() << "Error al grabar";
         }
