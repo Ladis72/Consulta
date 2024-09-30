@@ -16,6 +16,10 @@ Consulta::Consulta(QWidget *parent)
     funcion.funcionaDB();
     configuracion.clear();
     cargarConfiguracion();
+    QAction *accionGuardar = new QAction(this);
+    accionGuardar->setShortcut(QKeySequence("Ctrl+s"));
+    connect(accionGuardar, &QAction::triggered, this, &Consulta::on_pbGuardar_clicked);
+    this->addAction(accionGuardar);
     //llenarHistoricoDatos();
 }
 
