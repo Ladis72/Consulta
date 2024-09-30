@@ -5,6 +5,7 @@
 #include <QProcess>
 #include <QDesktopServices>
 #include <QInputDialog>
+#include <QShortcut>
 
 Consulta::Consulta(QWidget *parent)
     : QMainWindow(parent)
@@ -16,10 +17,16 @@ Consulta::Consulta(QWidget *parent)
     funcion.funcionaDB();
     configuracion.clear();
     cargarConfiguracion();
-    QAction *accionGuardar = new QAction(this);
-    accionGuardar->setShortcut(QKeySequence("Ctrl+s"));
-    connect(accionGuardar, &QAction::triggered, this, &Consulta::on_pbGuardar_clicked);
-    this->addAction(accionGuardar);
+    // QAction *accionGuardar = new QAction(this);
+    // accionGuardar->setShortcut(QKeySequence("Ctrl+s"));
+    // connect(accionGuardar, , this, &Consulta::on_pbGuardar_clicked);
+    // this->addAction(accionGuardar);
+
+    QShortcut *atajo = new QShortcut(QKeySequence("Ctrl+s"),this);
+    connect(atajo, &QShortcut::activated, ui->pbGuardar, &QPushButton::click);
+
+
+
     //llenarHistoricoDatos();
 }
 
