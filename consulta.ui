@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>768</height>
+    <width>1579</width>
+    <height>904</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -102,6 +102,21 @@
           </property>
           <property name="shortcut">
            <string>Ctrl+S</string>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="autoDefault">
+           <bool>false</bool>
+          </property>
+          <property name="default">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -347,7 +362,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1200</width>
+     <width>1579</width>
      <height>30</height>
     </rect>
    </property>
@@ -365,8 +380,8 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>754</x>
-     <y>60</y>
+     <x>1572</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>796</x>
