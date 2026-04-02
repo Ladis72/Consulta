@@ -1,15 +1,22 @@
 #include "consulta.h"
 #include "ui_consulta.h"
+#include <algorithm>
 #include <QColorDialog>
 #include <QDate>
+#include <QDateTime>
 #include <QDebug>
 #include <QDesktopServices>
+#include <QDir>
+#include <QFileDialog>
+#include <QFileInfo>
 #include <QFont>
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QInputDialog>
+#include <QMessageBox>
 #include <QProcess>
 #include <QShortcut>
+#include <QStandardPaths>
 #include <QToolBar>
 
 Consulta::Consulta(QWidget *parent)
@@ -309,6 +316,7 @@ void Consulta::on_pbGuardar_clicked() {
 }
 
 void Consulta::on_pbCapurarIris_clicked() {
+  /*
   if (pacienteId == 0) {
     QMessageBox::warning(this, "Seleccione paciente",
                          "Debe seleccionar un paciente para capturar vídeo.");
@@ -336,6 +344,35 @@ void Consulta::on_pbCapurarIris_clicked() {
   QString fullCommand = appVideo + " " + comando;
 
   qDebug() << "Ejecutando via shell:" << fullCommand;
+  proc->start("/bin/sh", QStringList() << "-c" << fullCommand);
+  */
+  if (paciente.isEmpty()) {
+
+    QMessageBox::warning(this, "Seleccione paciente",
+                         "Debe seleccionar un paciente para capturar vídeo.");
+    return;
+  }
+  QString subDir = directorioTrabajo + "/" + paciente + "/Iris";
+  QDir dir;
+  if (!dir.exists(subDir)) {
+    dir.mkpath(subDir);
+  }
+  // Guardar la ruta para usar despues
+  this->irisPath = subDir;
+  this->pacienteActual = paciente;
+
+  // Abrir VLC como proceso hijo(no en segundo plano)
+  QString fullCommand = appVideo + " " + comandoVideo;
+
+  // Importante: no musar QProcess::startDetached
+  QProcess *proc = new QProcess(this);
+
+  // Conectar la señal para cuando se cierre VLC de forma robusta
+  connect(proc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+          this, &Consulta::onVlcFinished);
+
+  // Ejecutar
+  qDebug() << "Ejecutando VLC: " << fullCommand;
   proc->start("/bin/sh", QStringList() << "-c" << fullCommand);
 }
 
@@ -369,4 +406,62 @@ void Consulta::on_tWHistoricoDatos_doubleClicked(const QModelIndex &index) {
 
 void Consulta::on_twVisitas_clicked(const QModelIndex &index) {
   ui->twVisitas->resizeColumnsToContents();
+}
+
+void Consulta::onVlcFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+  qDebug() << "VLC finished with code:" << exitCode << "Status:" << exitStatus;
+  renombrarUltimoArchivo(irisPath, pacienteActual);
+  llenarIris();
+}
+
+void Consulta::renombrarUltimoArchivo(QString directorio, QString paciente) {
+  // Solo buscamos en la carpeta de vídeos predeterminada del sistema
+  QString videoPath = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation);
+  QDir dir(videoPath);
+  
+  qDebug() << "Buscando grabaciones recientes en:" << videoPath;
+
+  // Obtención de archivos con el filtro de VLC ordenados por fecha de creación (de más nuevo a más viejo)
+  QStringList filtros;
+  filtros << "vlc-record*.avi" << "vlc-record*.mp4" << "vlc-record*.mpg" << "vlc-record*.ts";
+  QFileInfoList archivos = dir.entryInfoList(filtros, QDir::Files, QDir::Time);
+  
+  QFileInfoList recientes;
+  for (const QFileInfo &info : archivos) {
+    // Solo tomamos archivos grabados en la sesión actual (últimos 5 minutos)
+    if (info.lastModified().secsTo(QDateTime::currentDateTime()) < 300) {
+      recientes << info;
+    }
+  }
+
+  if (recientes.isEmpty()) {
+    qDebug() << "No se encontró ningún vídeo reciente en" << videoPath;
+    return;
+  }
+
+  // Sanitización del nombre del paciente
+  QString pacLimpio = paciente.simplified().replace(" ", "_");
+  QString timestamp = QDateTime::currentDateTime().toString("yyyy-MM-dd_hhmmss");
+
+  // Procesamos hasta un máximo de 2 grabaciones (la más reciente y la anterior)
+  for (int i = 0; i < qMin(2, recientes.size()); ++i) {
+    QFileInfo oldFile = recientes.at(i);
+    
+    // Sufijo personalizado: el índice 0 es el más reciente (OI), el índice 1 es el anterior (OD)
+    QString sufijo = (i == 0) ? "_OI" : "_OD";
+    
+    QString ext = oldFile.suffix();
+    if (ext.isEmpty()) ext = "avi";
+
+    // Construcción del nuevo nombre con prefijo y sufijo ocular
+    QString newName = "Iris_" + pacLimpio + "_" + timestamp + sufijo + "." + ext;
+    QString target = directorio + "/" + newName;
+
+    // Movimiento definitivo al historial del paciente
+    if (QFile::rename(oldFile.absoluteFilePath(), target)) {
+      qDebug() << "Guardado correctamente (" << sufijo << "):" << newName;
+    } else {
+      qDebug() << "Error al procesar la grabación" << sufijo << "en" << target;
+    }
+  }
 }
