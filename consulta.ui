@@ -14,7 +14,7 @@
    <string>Consulta</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,3,2">
     <item row="2" column="0" colspan="4">
      <widget class="QTabWidget" name="tabWidget">
       <property name="layoutDirection">
@@ -46,7 +46,7 @@
         <string/>
        </property>
        <attribute name="title">
-        <string>Datos básicos</string>
+        <string>Datos Básicos</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_13">
         <item row="0" column="0" rowspan="3">
@@ -273,8 +273,8 @@
        <string>Imprimir</string>
       </property>
       <property name="icon">
-       <iconset>
-        <normaloff>:/new/ico/iconos/Printer_Picture.png</normaloff>:/new/ico/iconos/Printer_Picture.png</iconset>
+       <iconset resource="iconos.qrc">
+        <normaloff>:/iconos/imprimir.png</normaloff>:/iconos/imprimir.png</iconset>
       </property>
       <property name="iconSize">
        <size>

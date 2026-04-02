@@ -30,5 +30,7 @@
         <file>iconos/Snowe2.1 Icon 13.ico</file>
         <file>iconos/Stethoscope_Black.png</file>
         <file>iconos/ViewResults.ico</file>
+        <file>iconos/imprimir.png</file>
+        <file>style.qss</file>
     </qresource>
 </RCC>
